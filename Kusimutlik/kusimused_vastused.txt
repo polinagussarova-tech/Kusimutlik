@@ -1,0 +1,6 @@
+1. Mis on Python?:programmeerimiskeel
+2. Mis värvi on lumi?:valge
+3. Mis värvi on taevas?:sinine
+4. Kui palju on 2+2?:4
+5. Mis on kass?:loom
+6. Mis päev on pärast esmaspäeva?:teisipäev
