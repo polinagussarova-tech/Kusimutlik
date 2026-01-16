@@ -1,6 +1,6 @@
 
-read = []
-kus_vas = {}
+read=[]
+kus_vas={}
 def andmete_lugemine_failidest(read,kus_vas):
     with open("kysimused_vastused.txt", "r") as f:
         
@@ -32,4 +32,5 @@ def emaili_saatmine():
 
 def küsimuste_lisamine():
     pass
+
 
