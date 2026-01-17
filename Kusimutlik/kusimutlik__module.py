@@ -33,7 +33,7 @@ def testimine(kus_vas,vastused,N):
         tulemus=True
     else:
         tulemus=False
-        return punktid, tulemus
+    return punktid, tulemus
 
 
 def andmete_salvestamine_failidesse(koik, oiged, valed):
