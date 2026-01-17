@@ -3,7 +3,7 @@ read=[]
 kus_vas={} #sõnastik, kus võtmed on küsimused ja väärtused vastused
 testitud=[]
 
-def andmete_lugemine_failidest(read,kus_vas):
+def andmete_lugemine_failidest(read,kus_vas):    
     with open("kusimused_vastused.txt", "r", encoding="utf-8") as f:
         for rida in f:
             read.append(rida)
@@ -16,43 +16,41 @@ def andmete_lugemine_failidest(read,kus_vas):
         kus_vas[kusimus]=vastus
     return kus_vas, read
 
-def testimine(kus_vas,vastused,N):
+def testimine(kus_vas,N, nimi):
     punktid=0
-    kusimused=list(kus_vas.keys())
-    valitud_kusimused=random.sample(kusimused, N)
+    kusimused=random.sample(list(kus_vas.keys()), N)
 
-    for i in range(N):
-        kusimus=valitud_kusimused[i]
-        oige_vastus=kus_vas[kusimus]  
-        
-        vastus=vastused[i]
-        if vastus==oige_vastus:
+    for kusimus in kusimused:
+        vastus=input(f"{nimi}, {kusimus}")
+        if vastus==kus_vas[kusimus]:
             punktid+=1
 
-    if punktid > N / 2:
-        tulemus=True
-    else:
-        tulemus=False
-    return punktid, tulemus
+    sobis=punktid > N / 2
+    return punktid, sobis
 
 
 def andmete_salvestamine_failidesse(koik, oiged, valed):
+    oiged.sort(key=lambda x: x[1], reverse=True)
+    valed.sort(key=lambda x: x[0])
+    
     with open("õiged.txt", "w", encoding="utf-8") as f:
         for inimene in oiged:
             nimi=inimene[0]
             punktid=inimene[1]
-            print(nimi, punktid, "õigesti", file=f)
+            print(f"{nimi}, {punktid}, õigesti", file=f)
     
     with open("valed.txt", "w", encoding="utf-8") as f:
         for inimene in valed:
             nimi=inimene[0]
             punktid=inimene[1]
-            print(nimi, punktid, "õigesti", file=f)
+            print(f"{nimi}, {punktid}, valesti", file=f)
 
     with open("koik.txt", "w", encoding="utf-8") as f:
         for inimene in koik:
             nimi=inimene[0]
             punktid=inimene[1]
+            email=inimene[2]
+            print(nimi, punktid, email, file=f)
 
 def emaili_saatmine(nimi, punktid, sobis):
     email=nimi.replace(" ", ".") + "@example.com"
