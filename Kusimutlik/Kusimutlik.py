@@ -8,7 +8,6 @@ koik=[]
 oiged=[]
 valed=[]
 
-teeb_test=[]
 juba_testitud=["Mari", "Paul", "Johan"]
 
 valik=input("Vali 1- Alusta küsimustlikku, 2- lisa uus küsimus, 3- välju.")
@@ -28,7 +27,7 @@ if valik=="1":
                 print("See kasutaja on juba testitud! Sisesta teist nime.")
             else:
                 print(f"Tere, {nimi}!")
-                teeb_test.append(nimi)
+                juba_testitud.append(nimi)
                 break
 #testimine
         punktid, sobis=testimine(kus_vas, N, nimi)
