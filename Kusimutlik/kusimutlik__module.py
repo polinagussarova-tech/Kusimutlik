@@ -57,7 +57,21 @@ def raport_tooandjale(koik):
     print("Tänased küsimustiku tulemused:")
     
     koik.sort(key=lambda inimene: inimene["punktid"], reverse=True)
+    for i in range(len(koik)):
+        inimene = koik[i]
+        if inimene["sobis"]:
+            staatus = "SOBIS"
+        else:
+            staatus = "EI SOBINUD"
+            
+        print(i + 1, ".", inimene["nimi"], "–", inimene["punktid"], "õigesti –", inimene["email"], "–", staatus)
+     
     parim=koik[0]
+    
+    print(f"Parim vastaja: {parim['nimi']}-({parim['punktid']} õigesti)")
+    print("Lugupidamisega,")
+    print("Küsimustiku Automaatprogramm")
+
 
 def küsimuste_lisamine(kusimus, vastus):
     with open("kusimused_vastused.txt", "a", encoding="utf-8") as f:
