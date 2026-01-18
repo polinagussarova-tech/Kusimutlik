@@ -23,20 +23,20 @@ def testimine(kus_vas,N, nimi):
 
 
 def andmete_salvestamine_failidesse(koik, oiged, valed):
-    oiged.sort(key=lambda inimene: inimene["punktid"], reverse=True)
-    valed.sort(key=lambda inimene: inimene["nimi"])
+    oiged.sort(key=lambda vastaja: vastaja["punktid"], reverse=True)
+    valed.sort(key=lambda vastaja: vastaja["nimi"])
 
     with open("oiged.txt", "w", encoding="utf-8") as f:
-        for inimene in oiged:
-            print(inimene["nimi"], "-", inimene["punktid"], "oigesti", file=f)
+        for vastaja in oiged:
+            print(vastaja["nimi"], "-", vastaja["punktid"], "oigesti", file=f)
 
     with open("valed.txt", "w", encoding="utf-8") as f:
         for inimene in valed:
-            print(inimene["nimi"], "-", inimene["punktid"], "valesti", file=f)
+            print(vastaja["nimi"], "-", vastaja["punktid"], "valesti", file=f)
 
     with open("koik.txt", "w", encoding="utf-8") as f:
         for inimene in koik:
-            print(inimene["nimi"], "-", inimene["punktid"], "-", inimene["email"], file=f)
+            print(vastaja["nimi"], "-", vastaja["punktid"], "-", vastaja["email"], file=f)
 
     
 def emaili_saatmine(nimi, punktid, sobis):
@@ -56,15 +56,15 @@ def raport_tooandjale(koik):
     print("Tere!")
     print("Tänased küsimustiku tulemused:")
     
-    koik.sort(key=lambda inimene: inimene["punktid"], reverse=True)
+    koik.sort(key=lambda vastaja: vastaja["punktid"], reverse=True)
     for i in range(len(koik)):
-        inimene = koik[i]
-        if inimene["sobis"]:
-            staatus = "SOBIS"
+        vastaja=koik[i]
+        if vastaja["sobis"]:
+            staatus="SOBIS"
         else:
-            staatus = "EI SOBINUD"
+            staatus="EI SOBINUD"
             
-        print(i + 1, ".", inimene["nimi"], "–", inimene["punktid"], "õigesti –", inimene["email"], "–", staatus)
+        print(i + 1, ".", vastaja["nimi"], "–", vastaja["punktid"], "õigesti –", vastaja["email"], "–", staatus)
      
     parim=koik[0]
     
