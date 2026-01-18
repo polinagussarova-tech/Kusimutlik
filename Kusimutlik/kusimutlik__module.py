@@ -31,11 +31,11 @@ def andmete_salvestamine_failidesse(koik, oiged, valed):
             print(vastaja["nimi"], "-", vastaja["punktid"], "oigesti", file=f)
 
     with open("valed.txt", "w", encoding="utf-8") as f:
-        for inimene in valed:
+        for vastaja in valed:
             print(vastaja["nimi"], "-", vastaja["punktid"], "valesti", file=f)
 
     with open("koik.txt", "w", encoding="utf-8") as f:
-        for inimene in koik:
+        for vastaja in koik:
             print(vastaja["nimi"], "-", vastaja["punktid"], "-", vastaja["email"], file=f)
 
     
