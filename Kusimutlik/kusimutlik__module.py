@@ -1,31 +1,25 @@
 import random
-read=[]
-kus_vas={} #sõnastik, kus võtmed on küsimused ja väärtused vastused
-testitud=[]
 
-def andmete_lugemine_failidest(read,kus_vas):    
+kus_vas={} #sõnastik, kus võtmed on küsimused ja väärtused vastused
+
+def andmete_lugemine_failidest(kus_vas):    
     with open("kusimused_vastused.txt", "r", encoding="utf-8") as f:
         for rida in f:
-            read.append(rida)
-            
-    for rida in read:
-        kusimus,vastus=rida.split(":")
-        kusimus=kusimus.strip()
-        vastus=vastus.strip()
-
-        kus_vas[kusimus]=vastus
-    return kus_vas, read
+            if rida.strip() !="":
+                kusimus, vastus=rida.split(":")
+                kus_vas[kusimus.strip()]=vastus.strip()
+    return kus_vas
 
 def testimine(kus_vas,N, nimi):
     punktid=0
     kusimused=random.sample(list(kus_vas.keys()), N)
 
     for kusimus in kusimused:
-        vastus=input(f"{nimi}, {kusimus}")
+        vastus=input(f"{nimi}, {kusimus}").strip()
         if vastus==kus_vas[kusimus]:
             punktid+=1
 
-    sobis=punktid > N / 2
+    sobis=punktid > N/2
     return punktid, sobis
 
 
@@ -37,13 +31,13 @@ def andmete_salvestamine_failidesse(koik, oiged, valed):
         for inimene in oiged:
             nimi=inimene[0]
             punktid=inimene[1]
-            print(f"{nimi}, {punktid}, õigesti", file=f)
+            print(f"{nimi} - {punktid} õigesti", file=f)
     
     with open("valed.txt", "w", encoding="utf-8") as f:
         for inimene in valed:
             nimi=inimene[0]
             punktid=inimene[1]
-            print(f"{nimi}, {punktid}, valesti", file=f)
+            print(f"{nimi} - {punktid} valesti", file=f)
 
     with open("koik.txt", "w", encoding="utf-8") as f:
         for inimene in koik:
