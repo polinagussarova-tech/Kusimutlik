@@ -1,3 +1,4 @@
 # Kusimutlik
-<img width="789" height="809" alt="image" src="https://github.com/user-attachments/assets/3b407415-a854-49cd-b39d-dff95c6ac307" />
+<img width="786" height="814" alt="image" src="https://github.com/user-attachments/assets/721d9cd3-783c-48b7-8f8b-49a7a0965217" />
+
 
