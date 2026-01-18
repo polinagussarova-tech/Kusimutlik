@@ -11,6 +11,8 @@ def andmete_lugemine_failidest(kus_vas):
 
 def testimine(kus_vas,N, nimi):
     punktid=0
+    if N > len(kus_vas):
+        N=len(kus_vas)
     kusimused=random.sample(list(kus_vas.keys()), N)
 
     for kusimus in kusimused:
