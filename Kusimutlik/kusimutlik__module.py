@@ -3,10 +3,11 @@ kus_vas={} #sõnastik, kus võtmed on küsimused ja väärtused vastused
 
 def andmete_lugemine_failidest(kus_vas):    
     with open("kusimused_vastused.txt", "r", encoding="utf-8") as f:
-        for rida in f:
-            if rida.strip() !="":
+        for rida in f: #loeb informatsioon postrochno iz faila
+            rida=rida.strip()
+            if rida!="":
                 kusimus, vastus=rida.split(":")
-                kus_vas[kusimus.strip()]=vastus.strip()
+                kus_vas[kusimus]=vastus
     return kus_vas
 
 def testimine(kus_vas,N, nimi):
@@ -14,10 +15,11 @@ def testimine(kus_vas,N, nimi):
     
     if N > len(kus_vas):
         N=len(kus_vas)
-    kusimused=random.sample(list(kus_vas.keys()), N)
+    koik_kusimused=list(kus_vas.keys())
+    kusimused=random.sample(koik_kusimused, N)
 
     for kusimus in kusimused:
-        vastus=input(f"{nimi}, {kusimus}").strip()
+        vastus=input(f"{nimi}, {kusimus}")
         if vastus==kus_vas[kusimus]:
             punktid+=1
 
@@ -62,15 +64,17 @@ def raport_tooandjale(koik):
     print("Tänased küsimustiku tulemused:")
     
     koik.sort(key=lambda vastaja: vastaja["punktid"], reverse=True)
-    for i in range(len(koik)):
-        vastaja=koik[i]
+
+    nr=1
+    for vastaja in koik:
         if vastaja["sobis"]:
             staatus="SOBIS"
         else:
             staatus="EI SOBINUD"
-            
-        print(i + 1, ".", vastaja["nimi"], "–", vastaja["punktid"], "õigesti –", vastaja["email"], "–", staatus)
-     
+
+        print(nr, ".", vastaja["nimi"], "–", vastaja["punktid"], "õigesti –",vastaja["email"], "–", staatus)
+        nr+=1
+
     parim=koik[0]
     
     print(f"Parim vastaja: {parim['nimi']}-({parim['punktid']} õigesti)")
