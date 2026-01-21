@@ -11,6 +11,7 @@ def andmete_lugemine_failidest(kus_vas):
 
 def testimine(kus_vas,N, nimi):
     punktid=0
+    
     if N > len(kus_vas):
         N=len(kus_vas)
     kusimused=random.sample(list(kus_vas.keys()), N)
@@ -42,8 +43,10 @@ def andmete_salvestamine_failidesse(koik, oiged, valed):
 
     
 def emaili_saatmine(nimi, punktid, sobis):
-    email=nimi.lower().replace(" ", ".") + "@example.com"
-
+    email=nimi.lower()
+    email=email.replace(" ", ".")
+    email=email+"@example.com"
+        
     print(f"Saadetud:{email}")
     print(f"Tere, {nimi}!")
     print(f"Sinu õigete vastuste arv on: {punktid}")
