@@ -27,6 +27,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="koik.txt" />
     <Content Include="kusimused_vastused.txt" />
     <Content Include="valed.txt" />
     <Content Include="õiged.txt" />

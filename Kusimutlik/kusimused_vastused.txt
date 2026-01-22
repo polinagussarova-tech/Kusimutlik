@@ -4,3 +4,4 @@
 4. Kui palju on 2+2?:4
 5. Mis on kass?:loom
 6. Mis päev on pärast esmaspäeva?:teisipäev
+7. kui palju maksab kinnopilet?:12euro

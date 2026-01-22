@@ -16,7 +16,7 @@ while True:
     valik=input("Vali 1- Alusta küsimustlikku, 2- lisa uus küsimus, 3- välju: ")
     
     #2 Küsimustiku läbiviimine ja Vastajate hulk
-    elif valik=="1":
+    if valik=="1":
         kus_vas=andmete_lugemine_failidest(kus_vas)
         for i in range(M):
             while True:
@@ -49,6 +49,7 @@ while True:
             print("Emaili tulemused on saadetud.")
             
             raport_tooandjale(koik)
+            
         
     #6 Võimalus lisada küsimusi programmi kaudu
     elif valik=="2":
